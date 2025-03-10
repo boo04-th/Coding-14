@@ -24,9 +24,59 @@ function createSupportTicket(customerName, issueDisc, priorityLevel) {
     csTicket.appendChild(paragraph); // Adding issue description to the ticket
     csTicket.appendChild(label); // Adding priority level to the ticket
     csTicket.appendChild(resolveButton); // Adding resolve button to the ticket
-    
+
       // Task 3: Highlight High Priority Tickets
       if (priorityLevel === 'High') {
         csTicket.classList.add('HighPriority'); // Assigning a class for high-priority tickets for styling
     }
+
+    // Task 5: Implementing Inline Editing
+
+    const editButton = document.createElement('button'); // Creating an Edit button for modifying ticket details
+    editButton.textContent = 'Edit Ticket'; // Setting button text to "Edit Ticket"
+
+    csTicket.append(editButton); // Appending the edit button to the support ticket
+
+    // Event listener for editing the ticket details
+    editButton.addEventListener('click', (event) => {
+        const nameInput = document.createElement('input'); // Creating an input field for editing customer name
+        nameInput.value = heading.textContent; // Pre-filling with the existing name
+
+        const discInput = document.createElement('input'); // Creating an input field for editing issue description
+        discInput.value = paragraph.textContent; // Pre-filling with the existing issue description
+
+        const priorityLevelInput = document.createElement('select'); // Creating a dropdown for editing priority level
+        ["Low", "Medium", "High"].forEach(level => {
+            const option = document.createElement('option');
+            option.value = level;
+            option.textContent = level;
+            if (level === priorityLevel) option.selected = true; // Pre-selecting the current priority
+            priorityLevelInput.appendChild(option);
+        });
+
+        const saveButton = document.createElement('button'); // Creating a save button to save changes
+        saveButton.textContent = 'Save Changes'; // Setting button text to "Save Changes"
+
+        // Event listener for saving edited ticket details
+        saveButton.addEventListener('click', (event) => {
+            heading.textContent = nameInput.value; // Updating the customer name
+            paragraph.textContent = discInput.value; // Updating the issue description
+            label.textContent = `Priority Level: ${priorityLevelInput.value}`; // Updating priority level
+            csTicket.setAttribute('data-priority', priorityLevelInput.value); // Updating the priority data attribute
+
+            // Removing input fields and save button after saving
+            nameInput.replaceWith(heading);
+            discInput.replaceWith(paragraph);
+            priorityLevelInput.replaceWith(label);
+            saveButton.remove();
+
+            selectHighPriorityTickets(); // Reapply high-priority highlighting if priority was changed
+        });
+
+        // Replacing static text with input fields for editing
+        heading.replaceWith(nameInput);
+        paragraph.replaceWith(discInput);
+        label.replaceWith(priorityLevelInput);
+        csTicket.appendChild(saveButton);
+    });
 
