@@ -79,4 +79,26 @@ function createSupportTicket(customerName, issueDisc, priorityLevel) {
         label.replaceWith(priorityLevelInput);
         csTicket.appendChild(saveButton);
     });
+    // Task 4: Implementing Ticket Resolution
+
+    resolveButton.addEventListener('click', (event) => {
+        console.log(heading.textContent, "Support Ticket Resolved"); // Logging a message when the resolve button is clicked
+        csTicket.remove(); // Removing the support ticket from the DOM
+        
+        event.stopPropagation(); // Prevents bubbling up to parent elements
+    });
+
+    // Event listener to log a message when a ticket is clicked
+    csTicket.addEventListener('click', (event) => {
+        console.log(heading.textContent, "Support Ticket Clicked"); // Logs a message when a support ticket is clicked
+    });
+
+    ticketContainer.appendChild(csTicket); // Appending the support ticket to the ticket container div
+}
+
+// Creating sample support tickets
+createSupportTicket("Jennie Lu", "Payment Issue", "High"); 
+createSupportTicket("Chloe Nguyen", "Password incorrect", "Low"); 
+createSupportTicket("Janet Tran", "Systems unprocessed", "High"); 
+
 
