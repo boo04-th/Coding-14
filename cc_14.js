@@ -101,4 +101,17 @@ createSupportTicket("Jennie Lu", "Payment Issue", "High");
 createSupportTicket("Chloe Nguyen", "Password incorrect", "Low"); 
 createSupportTicket("Janet Tran", "Systems unprocessed", "High"); 
 
+// Task 3: Converting NodeLists to Arrays for Bulk Updates
+
+function selectHighPriorityTickets() {
+    const csTicket = document.querySelectorAll('.supportTicket.HighPriority'); // Selecting all high-priority support tickets
+    const csHighPriorityTicketsArray = [...csTicket]; // Converting NodeList to an array
+
+    // Using forEach() to update the appearance of high-priority tickets
+    csHighPriorityTicketsArray.forEach(ticket =>
+        ticket.style.backgroundColor = '#d2b4de' // Changing the color of high-priority tickets to a soft purple
+    );
+}
+
+selectHighPriorityTickets(); // Applying styling to all high-priority tickets
 
