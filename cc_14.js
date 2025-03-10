@@ -24,3 +24,9 @@ function createSupportTicket(customerName, issueDisc, priorityLevel) {
     csTicket.appendChild(paragraph); // Adding issue description to the ticket
     csTicket.appendChild(label); // Adding priority level to the ticket
     csTicket.appendChild(resolveButton); // Adding resolve button to the ticket
+    
+      // Task 3: Highlight High Priority Tickets
+      if (priorityLevel === 'High') {
+        csTicket.classList.add('HighPriority'); // Assigning a class for high-priority tickets for styling
+    }
+
