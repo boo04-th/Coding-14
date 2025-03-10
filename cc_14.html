@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Support System</title>
+    <style>
+        .ticket {
+            border: 1px solid #ccc;
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+        
+        .high-priority {
+            background-color: #ffebee;
+            border-color: #ff1744;
+        }
+
+        button {
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            margin: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Customer Support Ticket System</h1>
+    </header>
+
+    <main>
+        <button onclick="addTestTicket()">Add Test Ticket</button>
+        <div id="ticketContainer"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Support Center. All rights reserved.</p>
+    </footer>
+
+    <script src="cc_14.js"></script>
+</body>
+</html>
